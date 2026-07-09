@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Resume Parser</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Resume Parser</h1>
+            {% if error %}
+                <p class="error">{{ error }}</p>
+            {% endif %}
+            {% if success %}
+                <p class="success">{{ success }}</p>
+            {% endif %}
+            <form method="POST" enctype="multipart/form-data">
+                <input type="file" name="resume">
+                <button type="submit">📄 Upload Resume</button>
+            </form>
+        <h2> Extracted Information</h2>
+        <p><strong> Name: </strong> {{name}} </p>
+        <p><strong> Email: </strong> {{email}} </p>
+        <p><strong> Phone: </strong> {{phone}} </p>
+        <h3> Skills</h3>
+        <ul>
+            {% for skill in skills %}
+                <li>{{skill}}</li>
+            {% endfor %}
+        </ul>
+        <h3> Education</h3>
+        <ul>
+            {% for degree in education %}
+                <li>{{degree}}</li>
+            {% endfor %}
+        </ul>
+        </div>
+    </body>
+</html>
